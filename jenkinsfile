@@ -4,21 +4,20 @@ pipeline {
         maven 'maven'
     }
     stages {
-        stage('Build') {
+        stage ('Build') {
             steps {
-                script {
-                    bat 'mvn clean package'
-                }
+                bat 'mvn clean -Dmaven.test.skip package'
             }
         }
-      stage ('Run JAR File') {
+        stage ('Run JAR File') {
             steps {
                 script {
-                    def jarFilePath = 'C:/ProgramData/Jenkins/.jenkins/workspace/demo3/target/*.jar'
-                    def batchScript = "\"C:\\Windows\\System32\\cmd.exe\" /c \"java -jar ${jarFilePath}\""
+                    def jarFilePath = 'C:/ProgramData/Jenkins/.jenkins/workspace/jwt-token/target/*.jar'
+                    def batchScript = "cmd /c \"java -jar ${jarFilePath}\""
                     bat label: 'Run JAR in Background', script: batchScript
                 }
             }
         }
     }
+  
 }
