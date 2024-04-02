@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat 'mvn clean package'
+                    powershell 'mvn clean package'
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     def jarFilePath = "C:/ProgramData/Jenkins/.jenkins/workspace/jwt-token/target/*.jar"
-                    bat "java -jar ${jarFilePath}"
+                    powershell "java -jar ${jarFilePath}"
                 }
             }
         }
