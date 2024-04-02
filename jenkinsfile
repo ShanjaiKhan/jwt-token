@@ -6,12 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean package'
+                script {
+                    bat 'mvn clean package'
+                }
             }
         }
         stage('Run JAR File') {
             steps {
-                bat 'java -jar "C:/ProgramData/Jenkins/.jenkins/workspace/jwt-token/target/*.jar"'
+                script {
+                    def jarFilePath = "C:/ProgramData/Jenkins/.jenkins/workspace/jwt-token/target/*.jar"
+                    bat "java -jar ${jarFilePath}"
+                }
             }
         }
     }
