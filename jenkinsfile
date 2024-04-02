@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     def jarFilePath = 'C:/ProgramData/Jenkins/.jenkins/workspace/jwt-token/target/sprinboot-restapi-0.0.1-SNAPSHOT.jar'
-                    def batchScript = "start /B cmd /c \"java -jar ${jarFilePath}\""
+                    def batchScript = " cmd /c \"java -jar ${jarFilePath}\""
                     bat label: 'Run JAR in Background', script: batchScript
                 }
             }
